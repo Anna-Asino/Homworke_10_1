@@ -19,5 +19,5 @@ def get_mask_account(acc_number: str | int) -> str | None:
 
 
 if __name__ == "__main__":
-    print(get_mask_card_number(7000792289606361))
+    print(get_mask_card_number(700079228960636))
     print(get_mask_account(73654108430135874305))
