@@ -2,6 +2,7 @@ from typing import List
 from typing import Iterator
 
 
+transactions_1 = []
 transactions = (
     [
         {
@@ -105,3 +106,15 @@ if __name__ == "__main__":
     usd_transactions = filter_by_currency(transactions, "USD")
     for _ in range(3):
         print(next(usd_transactions))
+
+def transaction_descriptions(transactions_list):
+    """Генератор,принимающий список словарей с транзакциями и возвращает
+     описание каждой операции по очереди"""
+
+    try:
+        for description in transactions_list:
+            yield description.get('description')
+    except StopIteration:
+        if transactions == []:
+            return "Транзакций нет"
+

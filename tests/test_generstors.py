@@ -1,5 +1,5 @@
 import pytest
-from src.generators import filter_by_currency
+from src.generators import filter_by_currency, transaction_descriptions
 @pytest.fixture
 def transactions():
     return [{
@@ -40,3 +40,20 @@ def test_filter_by_currency_exceptions(transactions):
     assert list(result) == []
     result = filter_by_currency([], "EUR")
     assert result == "Нет транзакций в такой валюте"
+
+
+@pytest.mark.parametrize('index, expected', [(0, 'Перевод организации'), (1, 'Перевод со счета на счет')])
+
+def test_transaction_descriptions_exp(index, expected):
+
+    transactions = [
+
+        {'description': 'Перевод организации'},
+
+        {'description': 'Перевод со счета на счет'}
+
+    ]
+
+    descriptions = list(transaction_descriptions(transactions))
+
+    assert descriptions[index] == expected
