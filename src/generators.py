@@ -66,24 +66,23 @@ transactions = [
 ]
 
 
-def filter_by_currency(transactions_list: List[dict], currency: str) -> Iterator:
+def filter_by_currency(transaction_list, currency):
     """Функция,принимающая на вход список словарей, представляющих
     транзакциии и возвращающая итератор, который поочередно выдает
     транзакции, где валюта операции соответствует заданной"""
 
-    if len(transactions_list) > 0:
-        for transaction in transactions_list:
-            if transaction["operationAmount"]["currency"]["code"] == currency:
-                yield transaction
-    elif len(transactions_list) < 0:
-        raise StopIteration("Список пуст")
-    elif len(transactions_list) == list():
-        raise AssertionError("Список пуст")
+    if len(transaction_list) > 0:
+        filtered_transactions = filter(
+            lambda transactions_list: transactions_list.get("operationAmount").get("currency").get(
+                    "code") == currency, transaction_list)
+        return filtered_transactions
+    else:
+        return "Список пустой!"
 
 
 # if __name__ == "__main__":
-#     usd_transactions = filter_by_currency(transactions, "USD")
-#     for _ in range(3):
+#     usd_transactions = filter_by_currency(transactions, "RUB")
+#     for _ in range(2):
 #         print(next(usd_transactions))
 
 
