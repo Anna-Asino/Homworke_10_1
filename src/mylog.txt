@@ -6,4 +6,15 @@
 <function my_function at 0x0000015B8931EDE0> ok
 <function my_function at 0x0000021A8D89EDE0> ok
 <function my_function at 0x000002138D35EDE0> ok
-<function my_function at 0x000001B802F9EDE0> error: can only concatenate str (not "int") to str. Inputs: ('b', 2), {}
+<function my_function at 0x000001B802F9EDE0> error: can only concatenate str (not "int") to str. Inputs: ('b', 2), {}<function my_function at 0x00000168AF6FEDE0> error: can only concatenate str (not "int") to str. Inputs: ('b', 2), {}<function my_function at 0x00000252BFF1EDE0> ok
+<function my_function at 0x00000222A316EDE0> ok
+<function my_function at 0x000001F2537FEDE0> ok
+<function my_function at 0x000001B63044EDE0> error: can only concatenate str (not "int") to str. Inputs: ('2', 2), {}
+my_function
+my_function ok
+my_function ok
+my_function error: can only concatenate str (not "int") to str. Inputs: ('2', 2), {}
+my_function okmy_function ok 
+my_function ok 
+my_function ok 
+my_function error: can only concatenate str (not "int") to str. Inputs: ('2', 2), {} 

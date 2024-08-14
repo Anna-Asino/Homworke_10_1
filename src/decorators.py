@@ -3,18 +3,19 @@ from typing import Any, Callable
 
 
 def log(filename: Any = None) -> Callable:
-    """Декоратор, который логирует вызов функции и ее результат в файл"""
+    """Декоратор, который логирует вызов функции и ее результат в файл и консоль"""
 
     def decorator(func: Callable) -> Callable:
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
-                log_messege = f'{my_function} ok\n'
+                log_messege = f'my_function ok \n'
+                # with open(filename, "a", encoding="utf-8") as file:
 
             except Exception as e:
                 result = None
-                log_messege = f'{my_function} error: {e}. Inputs: {args}, {kwargs}'
+                log_messege = f'my_function error: {e}. Inputs: {args}, {kwargs} \n'
             if filename:
                 with open(filename, "a", encoding="utf-8") as file:
                     file.write(log_messege)
@@ -31,4 +32,4 @@ def my_function(x, y):
 
 
 if __name__ == "__main__":
-    print(my_function('b', 2))
+    print(my_function('2', 2))
