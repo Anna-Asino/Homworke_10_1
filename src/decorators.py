@@ -10,12 +10,11 @@ def log(filename: Any = None) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
-                log_messege = f'my_function ok \n'
-                # with open(filename, "a", encoding="utf-8") as file:
+                log_messege = f'{func.__name__} ok \n'
 
             except Exception as e:
                 result = None
-                log_messege = f'my_function error: {e}. Inputs: {args}, {kwargs} \n'
+                log_messege = f'{func.__name__} error: {e}. Inputs: {args}, {kwargs} \n'
             if filename:
                 with open(filename, "a", encoding="utf-8") as file:
                     file.write(log_messege)
@@ -32,4 +31,4 @@ def my_function(x, y):
 
 
 if __name__ == "__main__":
-    print(my_function('2', 2))
+    print(my_function(1, "2"))
